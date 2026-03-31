@@ -1,6 +1,6 @@
 :root {
-    --bg-color: #cbd3c1;
-    --card-bg: #eceae2;
+    --bg-color: #cbd3c1; /* Verde das imagens */
+    --card-bg: #eceae2; /* Creme dos cards */
     --text-color: #5a5d54;
     --border-color: #b8b8b8;
     --shadow: 0 10px 40px rgba(0,0,0,0.08);
@@ -16,27 +16,36 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    padding: 20px;
+    overflow-x: hidden;
 }
 
 .container {
     display: flex;
-    width: 90%;
+    width: 100%;
     max-width: 1100px;
     align-items: center;
     justify-content: space-around;
-    gap: 50px;
+    gap: 40px;
+    flex-wrap: wrap; /* Permite quebrar linha no mobile */
 }
 
-/* Branding */
+/* Branding (Lado Esquerdo) */
+.branding {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
 .logo-wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .arch-shape {
@@ -49,42 +58,43 @@ body {
 h1 {
     font-weight: 300;
     letter-spacing: 4px;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    line-height: 1.2;
 }
 
 .subtitle {
     margin-top: 20px;
     font-size: 0.75rem;
     letter-spacing: 6px;
-    text-align: center;
 }
 
-/* Cards */
+/* Área de Conteúdo (Cards) */
 .content-area {
     width: 100%;
     max-width: 420px;
+    flex: 1;
 }
 
 .card {
     background-color: var(--card-bg);
-    padding: 50px 40px;
+    padding: clamp(30px, 8vw, 50px);
     box-shadow: var(--shadow);
     display: none;
     flex-direction: column;
-    transition: all 0.4s ease;
+    border-radius: 4px;
+    animation: fadeIn 0.4s ease;
 }
 
 .card.active {
     display: flex;
-    animation: slideIn 0.5s ease forwards;
 }
 
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Inputs e Botões */
+/* Formulários e Botões */
 input, .menu-links button {
     width: 100%;
     background: transparent;
@@ -94,6 +104,7 @@ input, .menu-links button {
     color: var(--text-color);
     font-size: 1rem;
     cursor: pointer;
+    outline: none;
 }
 
 .button-group {
@@ -109,11 +120,17 @@ input, .menu-links button {
     background-color: #d1d5c9;
     color: var(--text-color);
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
 .btn-action {
     background-color: #bdc3b5;
     font-weight: bold;
+}
+
+.btn-action:hover, .btn-alt:hover {
+    filter: brightness(0.9);
 }
 
 .social-icons {
@@ -126,23 +143,18 @@ input, .menu-links button {
     color: var(--text-color);
 }
 
-/* Atualize esta linha no seu CSS para incluir o select */
-input, select, .menu-links button {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    padding: 14px;
-    margin-bottom: 20px;
-    color: var(--text-color);
-    font-size: 1rem;
-    cursor: pointer;
-    appearance: none; /* Remove a seta padrão do navegador para ficar mais limpo */
-    -webkit-appearance: none;
-}
+/* MEDIA QUERY PARA TELEMÓVEIS */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .branding {
+        margin-bottom: 20px;
+    }
 
-/* Opcional: Adicionar uma seta customizada ou fundo para o select */
-select {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a5d54' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
+    h1 {
+        font-size: 1.6rem;
+    }
 }
