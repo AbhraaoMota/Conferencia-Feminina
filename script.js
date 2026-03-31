@@ -8,7 +8,7 @@ const inputTelefone = document.getElementById('input-telefone');
 const form = document.getElementById('form-cadastro');
 
 // 2. O teu link do PagSeguro (Link Direto)
-const LINK_PAGSEGURO = "https://pag.ae/81DT4Yt9o"; 
+const LINK_PAGSEGURO = "https://pag.ae/81DTpEouo"; 
 
 // --- NAVEGAÇÃO ENTRE TELAS ---
 function showPage(pageId) {
