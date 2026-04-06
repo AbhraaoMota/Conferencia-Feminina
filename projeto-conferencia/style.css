@@ -1,0 +1,160 @@
+:root {
+    --bg-color: #cbd3c1; /* Verde das imagens */
+    --card-bg: #eceae2; /* Creme dos cards */
+    --text-color: #5a5d54;
+    --border-color: #b8b8b8;
+    --shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+    flex-wrap: wrap; /* Permite quebrar linha no mobile */
+}
+
+/* Branding (Lado Esquerdo) */
+.branding {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.arch-shape {
+    border: 1px solid var(--text-color);
+    padding: 25px 20px;
+    border-radius: 60px 60px 0 0;
+    font-size: 28px;
+}
+
+h1 {
+    font-weight: 300;
+    letter-spacing: 4px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    line-height: 1.2;
+}
+
+.subtitle {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 6px;
+}
+
+/* Área de Conteúdo (Cards) */
+.content-area {
+    width: 100%;
+    max-width: 420px;
+    flex: 1;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: clamp(30px, 8vw, 50px);
+    box-shadow: var(--shadow);
+    display: none;
+    flex-direction: column;
+    border-radius: 4px;
+    animation: fadeIn 0.4s ease;
+}
+
+.card.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Formulários e Botões */
+input, .menu-links button {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-alt, .btn-action {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #d1d5c9;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-action {
+    background-color: #bdc3b5;
+    font-weight: bold;
+}
+
+.btn-action:hover, .btn-alt:hover {
+    filter: brightness(0.9);
+}
+
+.social-icons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.social-icons i {
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+/* MEDIA QUERY PARA TELEMÓVEIS */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .branding {
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}
